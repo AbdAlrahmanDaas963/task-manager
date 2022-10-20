@@ -213,12 +213,10 @@ function Header() {
             <Button
               sx={{
                 marginTop: "16px",
-                backgroundColor: "#635EC6",
-                color: "#E1E7FE",
-                borderColor: "#E1E7FE",
               }}
               variant="outlined"
               onClick={handleSubmit}
+              disabled={title === "" || description === "" || status === ""}
             >
               Create Task
             </Button>

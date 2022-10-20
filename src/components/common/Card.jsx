@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import { nanoid } from "nanoid";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 
 import { updateTodo, deleteTodo } from "../../api/todosApi";
 
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import AdbIcon from "@mui/icons-material/Adb";
 import Button from "@mui/material/Button";
-import AddIcon from "@mui/icons-material/Add";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
@@ -120,21 +114,26 @@ function Card({ id, title, description, status }) {
                 <MoreVertIcon />
               </Button>
               <Menu {...bindMenu(popupState)}>
-                <MenuItem
-                  onClick={() => {
-                    popupState.close();
-                    handleOpen();
-                  }}
-                >
-                  Edit
+                <MenuItem>
+                  <Button
+                    onClick={() => {
+                      popupState.close();
+                      handleOpen();
+                    }}
+                  >
+                    Edit
+                  </Button>
                 </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    popupState.close();
-                    deleteTodoMutation.mutate({ id });
-                  }}
-                >
-                  Delete
+                <MenuItem color={"error"}>
+                  <Button
+                    onClick={() => {
+                      popupState.close();
+                      deleteTodoMutation.mutate({ id });
+                    }}
+                    color={"error"}
+                  >
+                    Delete
+                  </Button>
                 </MenuItem>
               </Menu>
             </React.Fragment>
@@ -224,9 +223,6 @@ function Card({ id, title, description, status }) {
             <Button
               sx={{
                 marginTop: "16px",
-                backgroundColor: "#635EC6",
-                color: "#E1E7FE",
-                borderColor: "#E1E7FE",
               }}
               variant="outlined"
               onClick={handleSubmit}

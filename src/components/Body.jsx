@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useQuery, useMutation, useQueryClient } from "react-query";
+import React from "react";
+import { useQuery, useQueryClient } from "react-query";
 
-import Skeleton from "@mui/material/Skeleton";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import { getTodos } from "../api/todosApi";
 
@@ -19,10 +19,8 @@ function Body() {
 
   if (isLoading)
     return (
-      <div className="Container">
-        <Skeleton animation="wave" />
-        <Skeleton animation="wave" />
-        <Skeleton animation="wave" />
+      <div className="loading">
+        <CircularProgress />
       </div>
     );
   if (isError) return <div>{error.message}</div>;
