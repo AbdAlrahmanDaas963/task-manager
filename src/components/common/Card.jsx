@@ -90,11 +90,13 @@ function Card({ id, title, description, status }) {
   const updateTodoMutation = useMutation(updateTodo, {
     onSuccess: () => {
       queryClinet.invalidateQueries("todos");
+      handleClose();
     },
   });
   const deleteTodoMutation = useMutation(deleteTodo, {
     onSuccess: () => {
       queryClinet.invalidateQueries("todos");
+      handleClose();
     },
   });
 

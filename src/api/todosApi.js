@@ -2,6 +2,7 @@ import axios from "axios";
 
 const todosApi = axios.create({
   baseURL: "https://rocky-cove-85788.herokuapp.com",
+  // baseURL: "http://localhost:3500",
 });
 
 export const getTodos = async () => {
